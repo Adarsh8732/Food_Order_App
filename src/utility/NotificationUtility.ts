@@ -3,6 +3,8 @@
 
 // OTP
 
+import { ACCOUNTSID, AUTHTOKEN } from "../config";
+
 export const GenerateOtp = ()=>{
     const otp = Math.floor(100000 + Math.random()*900000);
     let expiry = new Date();
@@ -11,8 +13,8 @@ export const GenerateOtp = ()=>{
 }
 
 export const onRequestOTP = async(otp:number,toPhoneNumber:string)=>{
-    const accountSid = "ACfc038ed92a85c481dc1eef940d9fd19c";
-    const authToken ="421e22d4a889b7b0bc341ec0fba4ac6b";
+    const accountSid = ACCOUNTSID;
+    const authToken = AUTHTOKEN;
 
     const client = require('twilio')(accountSid,authToken);
 
