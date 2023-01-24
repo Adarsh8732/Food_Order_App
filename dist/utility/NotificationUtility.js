@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.onRequestOTP = exports.GenerateOtp = void 0;
+const config_1 = require("../config");
 const GenerateOtp = () => {
     const otp = Math.floor(100000 + Math.random() * 900000);
     let expiry = new Date();
@@ -19,8 +20,8 @@ const GenerateOtp = () => {
 };
 exports.GenerateOtp = GenerateOtp;
 const onRequestOTP = (otp, toPhoneNumber) => __awaiter(void 0, void 0, void 0, function* () {
-    const accountSid = "ACfc038ed92a85c481dc1eef940d9fd19c";
-    const authToken = "421e22d4a889b7b0bc341ec0fba4ac6b";
+    const accountSid = config_1.ACCOUNTSID;
+    const authToken = config_1.AUTHTOKEN;
     const client = require('twilio')(accountSid, authToken);
     const response = yield client.messages.create({
         body: `Your OTP is ${otp}`,
